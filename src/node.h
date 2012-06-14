@@ -126,20 +126,20 @@ void SetPrototypeMethod(target_t target,
 #define NODE_SET_PROTOTYPE_METHOD node::SetPrototypeMethod
 
 enum encoding {ASCII, UTF8, BASE64, UCS2, BINARY, HEX};
-enum encoding ParseEncoding(v8::Handle<v8::Value> encoding_v,
+NODE_EXTERN enum encoding ParseEncoding(v8::Handle<v8::Value> encoding_v,
                             enum encoding _default = BINARY);
 NODE_EXTERN void FatalException(v8::TryCatch &try_catch);
 void DisplayExceptionLine(v8::TryCatch &try_catch); // hack
 
-v8::Local<v8::Value> Encode(const void *buf, size_t len,
+NODE_EXTERN v8::Local<v8::Value> Encode(const void *buf, size_t len,
                             enum encoding encoding = BINARY);
 
 // Returns -1 if the handle was not valid for decoding
-ssize_t DecodeBytes(v8::Handle<v8::Value>,
+NODE_EXTERN ssize_t DecodeBytes(v8::Handle<v8::Value>,
                     enum encoding encoding = BINARY);
 
 // returns bytes written.
-ssize_t DecodeWrite(char *buf,
+NODE_EXTERN ssize_t DecodeWrite(char *buf,
                     size_t buflen,
                     v8::Handle<v8::Value>,
                     enum encoding encoding = BINARY);
